@@ -1,0 +1,43 @@
+<main class="form-wrapper">
+  <form (ngSubmit)="onSubmit()" class="form" ngNativeValidate>
+    <h2 class="titulo">Nova transação</h2>
+
+    <div class="campos">
+      <label class="campo-grupo">
+        Transação
+        <div class="select-wrapper">
+          <select
+            [(ngModel)]="transactionType"
+            name="tipo-transacao"
+            class="campo select-tipo-transacao"
+            required
+          >
+            <option value="" selected disabled>
+              Selecione o tipo de transação
+            </option>
+
+            @for (type of enumTransactionType | keyvalue; track type.key) {
+            <option [value]="type.value">{{ type.value }}</option>
+            }
+          </select>
+        </div>
+      </label>
+      <label class="campo-grupo">
+        Valor
+        <div class="input-wrapper">
+          <input
+            [(ngModel)]="transactionValue"
+            type="number"
+            min="0.01"
+            step="0.01"
+            placeholder="00,00"
+            name="value"
+            class="campo input-valor-transacao"
+            required
+          />
+        </div>
+      </label>
+      <button class="botao-confirmar-transacao">Confirmar Transação</button>
+    </div>
+  </form>
+</main>

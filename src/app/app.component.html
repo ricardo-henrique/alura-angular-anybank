@@ -1,5 +1,9 @@
 <div class="app">
   <div class="banner-form-wrapper">
-    <app-banner></app-banner>
+    <app-banner [saldo]="balance()"></app-banner>
+    <app-form-new-transaction
+      (transactionCreated)="processTransaction($event)"
+    />
   </div>
+  <app-bank-statement [transactions]="transactions()" class="extrato" />
 </div>
